@@ -21,7 +21,6 @@
 
 <body>
 
-  <!-- Header -->
   <header class="main-header">
     <div class="container header-top">
       <div class="logo-section">
@@ -37,7 +36,7 @@
           <i class="fa-solid fa-phone"></i>
           <span>+94 71 123 4567</span>
         </div>
-        <a href="#" class="whatsapp-top">
+        <a href="https://wa.me/94711234567" class="whatsapp-top" target="_blank">
           <i class="fa-brands fa-whatsapp"></i>
           <span>WhatsApp Now</span>
         </a>
@@ -46,17 +45,15 @@
 
     <nav class="navbar">
       <div class="container nav-inner">
-
         <!-- Logo -->
         <div class="logo-container">
-          <a href="#" class="logo-link">
-            <img src="img/logo.png" alt="GreenEstates Logo" class="logo">
+          <a href="indexmac.html" class="logo-link">
+            <img src="img/logo.png" alt="LPN Lanka" class="logo">
           </a>
         </div>
-
         <!-- Desktop Menu -->
         <div class="desktop-menu">
-          <a href="index.html" class="nav-link">Home</a>
+          <a href="indexmac.html" class="nav-link">Home</a>
           <a href="about.html" class="nav-link">About</a>
           <a href="services.html" class="nav-link">Services</a>
           <a href="#" class="nav-link">Testimonials</a>
@@ -65,17 +62,15 @@
             <button class="btn-primary full" onclick="togglePropertyMenu(event)">
               View Properties ▾
             </button>
-
             <div id="propertyDropdown" class="dropdown-menu">
-              <a href="#rental" class="mobile-link">Rental</a>
-              <a href="#sale" class="mobile-link">Sale</a>
-              <a href="#compare" class="mobile-link">Compare</a>
+              <a href="rental.html" class="mobile-link">Rental</a>
+              <a href="indexmac.html#sale" class="mobile-link">Sale</a>
+              <a href="indexmac.html#compare" class="mobile-link">Compare</a>
             </div>
           </div>
         </div>
-
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="mobile-btn">
+        <button id="mobile-menu-button" class="mobile-btn" onclick="toggleMainNav()">
           <svg id="menu-open-icon" class="icon" viewBox="0 0 24 24">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -83,34 +78,28 @@
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
       </div>
     </nav>
 
     <nav class="main-nav">
       <div class="container nav-wrapper">
-
-        <!-- Toggle Menu Button -->
         <button class="main-nav-toggle" id="mainNavToggle" onclick="toggleMainNav()" aria-label="Toggle menu">
           <i class="fa-solid fa-bars" id="mainNavIcon"></i>
         </button>
-        <a href="#" class="nav-item home-btn"><i class="fa-solid fa-house"></i></a>
-
-        <a href="#rental" class="nav-item">Rental</a>
+        <a href="indexmac.html" class="nav-item home-btn"><i class="fa-solid fa-house"></i></a>
+        <a href="rental.html" class="nav-item">Rental</a>
         <span class="nav-separator">|</span>
-        <a href="#sale" class="nav-item">Sales</a>
+        <a href="indexmac.html#sale" class="nav-item">Sales</a>
         <span class="nav-separator">|</span>
-        <a href="#compare" class="nav-item">Construction</a>
+        <a href="services.html#construction" class="nav-item">Construction</a>
         <div class="search-nav">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search...">
         </div>
       </div>
-
-      <!-- Slide-down Nav Panel -->
       <div class="main-nav-panel" id="mainNavPanel">
         <div class="main-nav-panel-inner">
-          <a href="index.html" class="panel-nav-link active">Home</a>
+          <a href="indexmac.html" class="panel-nav-link active">Home</a>
           <a href="about.html" class="panel-nav-link">About</a>
           <a href="services.html" class="panel-nav-link">Services</a>
           <a href="#" class="panel-nav-link">Testimonials</a>
@@ -120,9 +109,9 @@
               <i class="fa-solid fa-building"></i> View Properties <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div id="panelPropertyDropdown" class="panel-dropdown-menu">
-              <a href="#rental"><i class="fa-solid fa-key"></i> Rental</a>
-              <a href="#sale"><i class="fa-solid fa-tag"></i> Sale</a>
-              <a href="#compare"><i class="fa-solid fa-scale-balanced"></i> Compare</a>
+              <a href="rental.html"><i class="fa-solid fa-key"></i> Rental</a>
+              <a href="indexmac.html#sale"><i class="fa-solid fa-tag"></i> Sale</a>
+              <a href="indexmac.html#compare"><i class="fa-solid fa-scale-balanced"></i> Compare</a>
             </div>
           </div>
         </div>
@@ -802,177 +791,8 @@
     </div>
   </div>
 
-  <script>
-    const slides = document.querySelectorAll('.bg-slider .slide');
-    let currentSlide = 0;
-
-    function nextSlide() {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }
-
-    setInterval(nextSlide, 5000); // Change image every 5 seconds
-
-    // ===== Main Nav Toggle =====
-    function toggleMainNav() {
-      const panel = document.getElementById('mainNavPanel');
-      const icon = document.getElementById('mainNavIcon');
-      const isOpen = panel.classList.toggle('open');
-      icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-    }
-
-    // Close panel when clicking outside
-    document.addEventListener('click', function (e) {
-      const panel = document.getElementById('mainNavPanel');
-      const toggle = document.getElementById('mainNavToggle');
-      if (panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)) {
-        panel.classList.remove('open');
-        const icon = document.getElementById('mainNavIcon');
-        if (icon) icon.className = 'fa-solid fa-bars';
-      }
-    });
-
-    // ===== Property Dropdown Toggle =====
-    function togglePropertyMenu(event) {
-      event.stopPropagation();
-      const dropdown = document.getElementById('propertyDropdown');
-      const panelDropdown = document.getElementById('panelPropertyDropdown');
-      if (dropdown) dropdown.classList.toggle('show');
-      if (panelDropdown) panelDropdown.classList.toggle('show');
-    }
-
-    // ===== Post Property Modal Logic =====
-    function openPostModal() {
-      document.getElementById('postPropertyModal').classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent scroll
-    }
-
-    function closePostModal() {
-      document.getElementById('postPropertyModal').classList.remove('active');
-      document.body.style.overflow = 'auto'; // Restore scroll
-    }
-
-    // Close modal on click outside content
-    window.onclick = function (event) {
-      const modal = document.getElementById('postPropertyModal');
-      if (event.target == modal) {
-        closePostModal();
-      }
-    }
-
-    // Form submission (prevention for now)
-    document.getElementById('postPropertyForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you! We have received your details and will contact you shortly.');
-      closePostModal();
-    });
-
-    // ===== Mobile Responsive Enhancements (Pagination & Animations) =====
-    document.addEventListener('DOMContentLoaded', () => {
-      const scrollRows = document.querySelectorAll('.mobile-scroll-row');
-
-      scrollRows.forEach(row => {
-        // Create pagination dots
-        const dotsContainer = document.createElement('div');
-        dotsContainer.className = 'mobile-pagination';
-        const cards = row.querySelectorAll('.property-card');
-
-        cards.forEach((_, idx) => {
-          const dot = document.createElement('div');
-          dot.className = 'dot' + (idx === 0 ? ' active' : '');
-          dotsContainer.appendChild(dot);
-        });
-
-        row.parentNode.insertBefore(dotsContainer, row.nextSibling);
-
-        // Scroll Animation & Pagination sync
-        const observerOptions = {
-          root: row,
-          threshold: 0.6
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Add animation class
-              entry.target.classList.add('in-view');
-
-              // Sync dots
-              const index = Array.from(cards).indexOf(entry.target);
-              const dots = dotsContainer.querySelectorAll('.dot');
-              dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-              });
-            } else {
-              entry.target.classList.remove('in-view');
-            }
-          });
-        }, observerOptions);
-
-        cards.forEach(card => observer.observe(card));
-
-        // Auto-pagination logic
-        let autoScrollTimer;
-        let currentIndex = 0;
-        let isUserInteracting = false;
-
-        const startAutoScroll = () => {
-          if (autoScrollTimer) clearInterval(autoScrollTimer);
-          autoScrollTimer = setInterval(() => {
-            if (!isUserInteracting && window.innerWidth <= 768) {
-              currentIndex = (currentIndex + 1) % cards.length;
-              const cardToScroll = cards[currentIndex];
-              row.scrollTo({
-                left: cardToScroll.offsetLeft - (row.offsetWidth - cardToScroll.offsetWidth) / 2,
-                behavior: 'smooth'
-              });
-            }
-          }, 4000); // Scroll every 4 seconds
-        };
-
-        const stopAutoScroll = () => {
-          if (autoScrollTimer) clearInterval(autoScrollTimer);
-        };
-
-        // Reset timer on user interaction
-        const handleInteraction = () => {
-          isUserInteracting = true;
-          stopAutoScroll();
-          // Resume after 10 seconds of no interaction
-          clearTimeout(window.interactionTimeout);
-          window.interactionTimeout = setTimeout(() => {
-            isUserInteracting = false;
-            startAutoScroll();
-          }, 10000);
-        };
-
-        row.addEventListener('touchstart', handleInteraction, { passive: true });
-        row.addEventListener('mousedown', handleInteraction);
-        row.addEventListener('scroll', () => {
-          // Sync currentIndex with centered card
-          const rowCenter = row.scrollLeft + row.offsetWidth / 2;
-          let bestIndex = 0;
-          let minDiff = Infinity;
-
-          cards.forEach((card, i) => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const diff = Math.abs(rowCenter - cardCenter);
-            if (diff < minDiff) {
-              minDiff = diff;
-              bestIndex = i;
-            }
-          });
-          currentIndex = bestIndex;
-        }, { passive: true });
-
-        // Initial start
-        startAutoScroll();
-      });
-    });
-  </script>
+  <script src="header.js"></script>
 
 </body>
 
 </html>
-
